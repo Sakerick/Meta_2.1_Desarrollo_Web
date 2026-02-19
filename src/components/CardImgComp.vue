@@ -6,9 +6,9 @@ const props = defineProps({
     type: String,
     default: 'card-img',
   },
-  isBlurry: {
+  imgSrc: {
     type: String,
-    default: 'true',
+    default: '',
   },
   caption: {
     type: String,
@@ -16,20 +16,7 @@ const props = defineProps({
   },
 })
 
-const imgSrc = ref('')
-
-function getImageUrl() {
-  const params = props.isBlurry === 'true' ? 'blur&t=' : 't='
-  return `https://picsum.photos/600/400?${params}${Math.random()}`
-}
-
-function changeImg() {
-  imgSrc.value = getImageUrl()
-  console.log('Imagen cambiada a: ' + imgSrc.value)
-}
-
-// Cargar imagen en el montaje
-imgSrc.value = getImageUrl()
+ref(props.imgSrc)
 </script>
 
 <template>
